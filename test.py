@@ -93,12 +93,12 @@ class TestViewPosts(unittest.TestCase):
         with self.assertRaises(ValueError): # Ensure the function raises an error for invalid selection
             main.selectPost(999, posts)
 
-###BOMUS FEATURE TESTS###
+###BONUS FEATURE TESTS###
 
 class TestFetchUserPosts(unittest.TestCase):
     @patch("requests.get")
     def test_fetch_user_posts_success(self, mock_get):
-        # Test that fetch_User_Posts returns posts for a given user
+        # Test that fetch_User_Posts returns posts for a given userr
         mock_get.return_value = MagicMock(
             status_code=200, 
             json=lambda: [{"userId": 1, "id": 1, "title": "User Post"}]
@@ -152,7 +152,7 @@ class TestCLIInterations(unittest.TestCase):
         with self.assertRaises(ValueError):
             main.selectPostFromInput(posts) # Ensure the function raises an error for invalid selection
 
-    @patch("builtins.input", side_effect=["3", "Python", "6"])
+    @patch("builtins.input", side_effect=["3", "Python", "7"])  # Add more inputs if there are more interactions
     def test_search_posts_cli(self, mock_input):
         # Test that the correct search results are printed to the console
         posts = [
@@ -162,10 +162,11 @@ class TestCLIInterations(unittest.TestCase):
         # Mock the fetch_posts function to return sample posts
         with patch("main.fetchPosts", return_value=posts):
             with patch("builtins.print") as mock_print:
-                main.main() # Run the main function that simulates user interaction
+                main.main()  # Run the main function that simulates user interaction
                 # Check if the correct search results are printed
-                mock_print.assert_any_call("- Learn Python (Post ID: 1)") # Check if the correct post is printed
-                mock_print.assert_any_call("Search Results:") # Check if the results header is printed
+                mock_print.assert_any_call("Search Results:")  # Check if the results header is printed
+                mock_print.assert_any_call("- Learn Python (Post ID: 1)")  # Check if the correct post is printed
 
+                
 if __name__ == "__main__":
     unittest.main()
