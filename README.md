@@ -80,7 +80,7 @@ This will automatically find and run all tests defined in files that match the p
 You can also run tests individually by specifying the test file or class. For example:
 
 ```bash
-python -m unittest test_main.TestFetchPosts
+python -m unittest test.TestFetchPosts
 ```
 
 ---
