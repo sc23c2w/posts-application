@@ -123,7 +123,7 @@ Users can search posts by a keyword. The application will filter posts whose tit
 
 ## Additional Features
 
-- **Error Handling**: The application handles HTTP errors, such as 404 and 500 errors, gracefully and provides feedback to the user.
+- **Error Handlling**: The application handles HTTP errors, such as 404 and 500 errors, gracefully and provides feedback to the user.
 - **Test Coverage**: The code has full unit test coverage which ensures that the application's features work as expected.
 
 ---
